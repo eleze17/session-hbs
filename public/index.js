@@ -10,12 +10,8 @@ btn.addEventListener('click' , async ()=>{
     redirect: 'follow'
     
 })
-.then(
-console.log(user))}
-
-
-
-    )
+}
+)
 
 
 

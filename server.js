@@ -40,16 +40,12 @@ api.use(session({
 let productos = []
 
 api.post('/formularios',(req,res)=>{
-  // req.session.usuario = req.body
-   // let usuario = req.session.usuario
-   // console.log(usuario)
-    let usuario2 = {nombre :"eze1"}
-    console.log(usuario2)
-    return usuario2
-   res.render('formulario',{usuario2})
-   return usuario2
-   // res.render('formulario',{usuario})
-   
+   req.session.usuario = req.body
+    res.redirect('/api/formulario')
+    console.log(req.session.usuario)
+    
+
+
 })
 
 api.get('/Productos',(req,res)=>{
@@ -57,15 +53,18 @@ api.get('/Productos',(req,res)=>{
    
 })
 
+api.post('/productos',(req,res)=>{
+     let id = productos.length + 1
+     req.body.id = id
+     productos.push(req.body)
+    let prod = req.body
+     res.render('productos',{ prod })
+  
 
- api.post('/Productos',(req,res)=>{
-   // let id = productos.length + 1
-   // req.body.id = id
-   // productos.push(req.body)
-   // let prod = req.body
-   // res.render('productos',{ prod })
-    let usuario = {nombre :"eze2"}
-    console.log(usuario)
+})    
+
+ api.get('/formulario',(req,res)=>{
+    let usuario = req.session.usuario
     res.render('formulario',{usuario})
     
 })
