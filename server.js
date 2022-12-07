@@ -69,6 +69,15 @@ api.post('/productos',(req,res)=>{
     
 })
 
+api.get('/logout',(req,res)=>
+    { req.session.destroy(err => {
+    if (!err)  res.redirect('../../')
+    else res.send({ status: 'Logout ERROR', body: err })
+})
+ 
+ 
+ })
+
 
 
 const PORT = 8080
